@@ -30,7 +30,7 @@ class NotaController extends Controller
      */
     public function create()
     {
-        //
+       return Inertia::render('Notas/Create');
     }
 
     /**
@@ -41,7 +41,16 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+      $request->validate([
+          'titulo' => 'required',
+          'contenido' => 'required',
+      ]);
+    
+       Nota::create($request->all());
+
+       return redirect()->route('noticias.index');
+
     }
 
     /**
