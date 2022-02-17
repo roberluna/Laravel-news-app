@@ -59,9 +59,13 @@ class NotaController extends Controller
      * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function show(Nota $nota)
+    public function show($id)
     {
-        //
+        $nota =  Nota::findOrFail($id);
+        
+        return Inertia::render('Notas/Show', [
+            'nota' => $nota
+        ]);
     }
 
     /**
