@@ -74,9 +74,12 @@ class NotaController extends Controller
      * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function edit(Nota $nota)
+    public function edit($id)
     {
-        //
+
+        return Inertia::render('Notas/Edit', [
+            'nota' => Nota::findOrFail($id)
+        ]);
     }
 
     /**
@@ -86,9 +89,18 @@ class NotaController extends Controller
      * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nota $nota)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+          'titulo' => 'required',
+          'contenido' => 'required',
+        ]);
+
+        $nota =  Nota::findOrFail($id);
+        
+        $nota->update($request->all());
+        return redirect()->route('noticias.index')->with('status','La noticia se ha actualizado');
+
     }
 
     /**
