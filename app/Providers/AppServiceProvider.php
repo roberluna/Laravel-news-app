@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(UrlGenerator $url)
     {
         if(env('REDIRECT_HTTPS')){
-            $url->formatSchme('https://');
+            $url->formatScheme('https://');
         }
 
         Inertia::share('flash', function(){
