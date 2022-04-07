@@ -17,6 +17,8 @@ class CreateNotasTable extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('contenido');
+            $table->biginteger('categories_id')->unsigned();
+            $table->foreign('categories_id')->references('id')->on('categories');
             $table->biginteger('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
             $table->timestamps();

@@ -25,6 +25,9 @@
                                 <jet-nav-link :href="route('noticias.index')" :active="route().current('noticias.*')">
                                     Noticias
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('categorias.index')" :active="route().current('categorias.*')">
+                                    Categorías
+                                </jet-nav-link>
                             </div>
                         </div>
 

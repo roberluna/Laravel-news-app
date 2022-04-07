@@ -15,21 +15,21 @@
                             <div class="px-4 py-5 bg-white sm:p-6">
 
                                     <label class="block font-medium text-sm text-gray-700">
-                                        Título
+                                        Nombre de la categoria
                                     </label>
 
                                     <textarea 
                                         class="form-input w-full rounded-md shadow-sm"
-                                        v-model="form.titulo"
+                                        v-model="form.category_name"
                                     ></textarea>
 
                                     <label class="block font-medium text-sm text-gray-700">
-                                        Contenido
+                                        Estatus
                                     </label>
 
                                     <textarea 
                                         class="form-input w-full rounded-md shadow-sm"
-                                        v-model="form.contenido"
+                                        v-model="form.category_status"
                                         rows="8"
                                     ></textarea>
                             
@@ -63,15 +63,15 @@
         data () {
             return {
                 form: {
-                    titulo: '',
-                    contenido: ''
+                    category_name: '',
+                    category_status: ''
                 }
             }
         },
         methods: {
             enviar() {
                 
-                this.$inertia.post(this.route('noticias.store'), this.form)
+                this.$inertia.post(this.route('categorias.store'), this.form)
             }
         }
     })
