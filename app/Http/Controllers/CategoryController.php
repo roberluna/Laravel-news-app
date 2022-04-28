@@ -50,9 +50,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        $category =  Category::findOrFail($id);
+
+         return Inertia::render('Categorias/Show', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -61,9 +65,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+         $category =  Category::findOrFail($id);
+
+         return Inertia::render('Categorias/Edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -73,9 +81,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+
+        return redirect()->route('categorias.index')->with('status','La categoría se ha actualizado');
     }
 
     /**
