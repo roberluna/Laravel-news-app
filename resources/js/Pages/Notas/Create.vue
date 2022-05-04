@@ -32,6 +32,17 @@
                                         v-model="form.contenido"
                                         rows="8"
                                     ></textarea>
+
+                                    <label class="block font-medium text-sm text-gray-700">
+                                        Categoría
+                                    </label>
+
+                                    <select v-model="form.categories_id" class="form-input w-full rounded-md shadow-sm">
+                                        <option value="">Seleccionar</option>
+                                        <option :value="category.id" v-for="category in categories" :key="category.id">
+                                            {{category.category_name}}
+                                        </option>
+                                    </select>
                             
                                     <button 
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
@@ -60,11 +71,15 @@
         components: {
             AppLayout,
         },
+        props:{
+            categories: Array,
+        },
         data () {
             return {
                 form: {
                     titulo: '',
-                    contenido: ''
+                    contenido: '',
+                    categories_id: ''
                 }
             }
         },
