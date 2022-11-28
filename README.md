@@ -1,4 +1,4 @@
-# CRUD con Laravel
+# Laravel CRUD application
 
 This application was created in order to test laravel 8. Implements intertia, vuejs, tailwind css and 2FA. It is a basic CRUD of news with the following features
 
